@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>回首处，灯火阑珊</title>
+  <title>C++算法：Josephus问题 | 回首处，灯火阑珊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="回首处，灯火阑珊">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="##Josephus算法问题  你刚刚说了JOJO对吧？！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++算法：Josephus问题">
+<meta property="og:url" content="http://yoursite.com/2020/05/01/C-%E7%AE%97%E6%B3%95%EF%BC%9AJosephus%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="回首处，灯火阑珊">
+<meta property="og:description" content="##Josephus算法问题  你刚刚说了JOJO对吧？！">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-01T13:01:49.000Z">
+<meta property="article:modified_time" content="2020-05-02T13:02:27.719Z">
 <meta property="article:author" content="浮生白衣">
 <meta name="twitter:card" content="summary">
   
@@ -155,34 +159,76 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-STL的探索-三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-C-算法：Josephus问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/18/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%89/">STL的探索 三</a>
+    <h1 class="article-title" itemprop="name">
+      C++算法：Josephus问题
     </h1>
   
 
         
-        <a href="/2020/04/18/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%89/" class="archive-article-date">
-  	<time datetime="2020-04-18T11:12:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
+        <a href="/2020/05/01/C-%E7%AE%97%E6%B3%95%EF%BC%9AJosephus%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-05-01T13:01:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##vector容器</p>
-        
-          <a class="article-more-a" href="/2020/04/18/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%89/#more">more >></a>
-        
+        <p>##Josephus算法问题<br>  你刚刚说了JOJO对吧？！</p>
+<a id="more"></a>
+<p>题目介绍：<br>  • 在罗马人占领乔塔帕特后，39 个犹太人与<br>Josephus及他的朋友躲到一个洞中，39个犹太人<br>决定宁死也不要被敌人抓到，于是决定了一个自<br>杀方式，41个人排成一个圆圈，由第1个人开始<br>报数，每报数到第3人该人就必须自杀，然后再<br>由下一个重新报数，直到所有人都自杀身亡为止<br>  • 然而Josephus 和他的朋友认为自杀式愚蠢的行<br>为，Josephus要他的朋友先假装遵从，他将朋友<br>与自己安排在第16个与第31个位置，于是逃过了<br>这场死亡游戏<br>  • n个人编号1~n，围成一个圈，从1号开始，数<br>到m退出，直到所有人都出圈为止，求n个人<br>的出圈次序（每个数后面输出一个空格）（<br>m,n&lt;=100000） • 例如：<br>• 输入：<br>• 41 3<br>• 输出<br>• 3 6 9 12 15 18 21 24 27 30 33 36 39 1 5 10<br>14 19 23 28 32 37 41 7 13 20 26 34 40 8 17<br>29 38 11 25 2 22 4 35 16 31<br>代码实现：<br>第一种利用数组循环，运行时间较长</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">  <span class="keyword">int</span> a[<span class="number">100000</span>],n,m,i,k=<span class="number">0</span>;</span><br><span class="line">  <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">  <span class="keyword">int</span> cnt=n;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">  &#123;</span><br><span class="line">    a[i]=i+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">   <span class="keyword">for</span>(i=<span class="number">0</span>;cnt&gt;<span class="number">0</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">     <span class="keyword">if</span>(a[i%n]) </span><br><span class="line">      &#123;</span><br><span class="line">       <span class="keyword">if</span>(k%m==m<span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">         <span class="built_in">cout</span>&lt;&lt;a[i%n]&lt;&lt;<span class="string">' '</span>;</span><br><span class="line">         a[i%n]=<span class="number">0</span>;</span><br><span class="line">        cnt--;</span><br><span class="line">        &#125;</span><br><span class="line">       k++;</span><br><span class="line">      &#125; </span><br><span class="line">    &#125; </span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二种利用vector函数，重复操作较多，运行时间也不理想</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i,m,n;</span><br><span class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">  <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">   &#123;</span><br><span class="line">    v.push_back(i);</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it =v.<span class="built_in">begin</span>();<span class="comment">//迭代器</span></span><br><span class="line"> <span class="keyword">while</span>(!v.empty())</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;m;i++)</span><br><span class="line">   &#123;</span><br><span class="line">    it++;</span><br><span class="line">    <span class="keyword">if</span>(it==v.<span class="built_in">end</span>())</span><br><span class="line">    it=v.<span class="built_in">begin</span>();</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;*it&lt;&lt;<span class="string">' '</span>;</span><br><span class="line">  it=v.erase(it);</span><br><span class="line">  <span class="keyword">if</span>(it==v.<span class="built_in">end</span>())</span><br><span class="line">  it=v.<span class="built_in">begin</span>();</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第三种利用list链表</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i,m,n;</span><br><span class="line">  <span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line">  <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">  &#123;</span><br><span class="line">   a.push_back(i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt;::iterator it =a.<span class="built_in">begin</span>();<span class="comment">//迭代器</span></span><br><span class="line">   <span class="keyword">while</span>(!a.empty())</span><br><span class="line">    &#123;</span><br><span class="line">     <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m<span class="number">-1</span>;i++)</span><br><span class="line">      &#123;</span><br><span class="line">       it++;</span><br><span class="line">       <span class="keyword">if</span>(it==a.<span class="built_in">end</span>())</span><br><span class="line">        it=a.<span class="built_in">begin</span>();</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;*it&lt;&lt;<span class="string">' '</span>;</span><br><span class="line">    it=a.erase(it);<span class="comment">//erase返回最后一个被删除元素的下一个元素。</span></span><br><span class="line">    <span class="keyword">if</span>(it==a.<span class="built_in">end</span>())</span><br><span class="line">    it=a.<span class="built_in">begin</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>//问题调整：<br>   • 如果只求最后剩下的一个人，不要求出圈<br>的过程，那么有效率更高的数学解法。需要利用到递归来求解<br>  代码实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> n,m;</span><br><span class="line">  <span class="keyword">int</span> p=<span class="number">0</span>; <span class="comment">//1个人的话，最后活下的编号是0号</span></span><br><span class="line">  <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) <span class="comment">//从第2个人开始循环</span></span><br><span class="line">  &#123;</span><br><span class="line">    p=(p+m)%i;</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="built_in">cout</span>&lt;&lt;p+<span class="number">1</span>;<span class="comment">//现实的编号要+1</span></span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>//问题调整：<br>  • 编号为1~n的n个人，从1开始数数，数到m<br>就被杀死。求出第k次被杀的人的编号。<br>• 输入n m k<br>• 输入样例： 9999 8888 6666<br>• 输出样例： 292<br>• 也就是说9999个人，数到8888被杀死，第<br>6666个被杀死的人编号为292号。<br>  代码实现：</p>
+<pre><code class="c++"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span>
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
+<span class="function"><span class="keyword">int</span> <span class="title">josephus</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m,<span class="keyword">int</span> k)</span></span>
+<span class="function"></span>{
+  <span class="keyword">if</span>(k==<span class="number">1</span>) <span class="keyword">return</span> (m<span class="number">-1</span>)%n;
+  <span class="keyword">return</span> (josephus(n<span class="number">-1</span>,m,k<span class="number">-1</span>)+m)%n;
+} 
+<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>
+<span class="function"></span>{
+  <span class="keyword">int</span> n,m,k;
+  <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;k;
+  <span class="keyword">int</span> p=josephus(n,m,k);
+  <span class="built_in">cout</span>&lt;&lt;p+<span class="number">1</span>;
+ <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -191,16 +237,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/18/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%89/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/01/C-%E7%AE%97%E6%B3%95%EF%BC%9AJosephus%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/30/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++模板的探索 二</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -220,597 +325,14 @@
 
 
 
-
-  
-    <article id="post-STL的探索-二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%8C/">STL的探索 二</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%8C/" class="archive-article-date">
-  	<time datetime="2020-04-17T11:11:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##string容器</p>
-        
-          <a class="article-more-a" href="/2020/04/17/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%8C/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%8C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-STL的探索-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/16/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%80/">STL的探索 一</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/16/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%80/" class="archive-article-date">
-  	<time datetime="2020-04-16T08:11:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##STL的初识</p>
-        
-          <a class="article-more-a" href="/2020/04/16/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%80/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/16/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-类和模板的探索 十" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/15/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2%20%E5%8D%81/">C++类和模板的探索 十</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/15/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2%20%E5%8D%81/" class="archive-article-date">
-  	<time datetime="2020-04-15T10:41:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##多态</p>
-        
-          <a class="article-more-a" href="/2020/04/15/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2%20%E5%8D%81/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/15/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2%20%E5%8D%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-类和模板的探索-九" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B9%9D/">C++类和模板的探索 九</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B9%9D/" class="archive-article-date">
-  	<time datetime="2020-04-10T10:41:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##运算符重载</p>
-        
-          <a class="article-more-a" href="/2020/04/10/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B9%9D/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B9%9D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-类和模板的探索-八" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/09/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AB/">C++类和模板的探索 八</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/09/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AB/" class="archive-article-date">
-  	<time datetime="2020-04-09T10:40:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##友元</p>
-        
-          <a class="article-more-a" href="/2020/04/09/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AB/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/09/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-类和模板的探索-七" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/07/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%83/">C++类和对象的探索 七</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/07/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%83/" class="archive-article-date">
-  	<time datetime="2020-04-07T11:53:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##静态成员变量和静态成员函数</p>
-        
-          <a class="article-more-a" href="/2020/04/07/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%83/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/07/C-%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-类和对象的探索-六" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/05/C-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AD/">C++类和对象的探索 六</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/05/C-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AD/" class="archive-article-date">
-  	<time datetime="2020-04-05T06:39:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##c++对象模型、this指针和常函数</p>
-        
-          <a class="article-more-a" href="/2020/04/05/C-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AD/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/05/C-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-类和对象的探索-五" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/C-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%94/">C++类和对象的探索 五</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/30/C-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%94/" class="archive-article-date">
-  	<time datetime="2020-03-30T06:38:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##静态成员变量和静态成员函数<br>
-        
-          <a class="article-more-a" href="/2020/03/30/C-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%94/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/30/C-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%94/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-函数的提高" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/29/%E5%87%BD%E6%95%B0%E7%9A%84%E6%8F%90%E9%AB%98/">函数的提高</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/29/%E5%87%BD%E6%95%B0%E7%9A%84%E6%8F%90%E9%AB%98/" class="archive-article-date">
-  	<time datetime="2020-03-29T08:59:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##函数的提高使用（默认函数、函数占位参数、函数重载）<br>
-        
-          <a class="article-more-a" href="/2020/03/29/%E5%87%BD%E6%95%B0%E7%9A%84%E6%8F%90%E9%AB%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/29/%E5%87%BD%E6%95%B0%E7%9A%84%E6%8F%90%E9%AB%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -833,8 +355,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
