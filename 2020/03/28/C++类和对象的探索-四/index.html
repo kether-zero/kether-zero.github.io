@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>回首处，灯火阑珊</title>
+  <title>C++类的对象的探索 四 | 回首处，灯火阑珊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="回首处，灯火阑珊">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="##对象的特征">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++类的对象的探索 四">
+<meta property="og:url" content="http://yoursite.com/2020/03/28/C++%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%9B%9B/index.html">
 <meta property="og:site_name" content="回首处，灯火阑珊">
+<meta property="og:description" content="##对象的特征">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-28T05:22:46.000Z">
+<meta property="article:modified_time" content="2020-05-02T10:58:11.353Z">
 <meta property="article:author" content="浮生白衣">
 <meta name="twitter:card" content="summary">
   
@@ -155,34 +159,61 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-C-模板的探索-二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-C++类和对象的探索-四" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/30/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%8C/">C++模板的探索 二</a>
+    <h1 class="article-title" itemprop="name">
+      C++类的对象的探索 四
     </h1>
   
 
         
-        <a href="/2020/04/30/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%8C/" class="archive-article-date">
-  	<time datetime="2020-04-30T12:35:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
+        <a href="/2020/03/28/C++%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%9B%9B/" class="archive-article-date">
+  	<time datetime="2020-03-28T05:22:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##类模板</p>
-        
-          <a class="article-more-a" href="/2020/04/30/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%8C/#more">more >></a>
-        
+        <p>##对象的特征</p>
+<a id="more"></a>
+<p>一、对象的初始化和清理<br>   ·构造函数：主要作用在于创建对象时为对象的成员属性赋值，构造函数由编译器自动调用，无需手动调用<br>    语法：类名(){}<br>          (1)构造函数，没有返回值不写void<br>         （2）函数名与类名相同<br>         （3）构造函数可以有参数，因此可以发生重载<br>         （4）程序在调用对象时会自动调用构造函数，无需手动调用，而且只会调用一次</p>
+<p>   ·析构函数：主要作用于对象销毁前系统的自动调用，执行一些清理工作（delete清理堆区）<br>    语法：~类名(){}<br>          (1)析构函数，没有返回值不写void<br>         （2）函数名与类名相同<br>         （3）构造函数不可以有参数，因此不可以发生重载<br>         （4）程序在对象销毁前会自动调用析构函数，无需手动调用，而且只会调用一次</p>
+<p>二、构造函数的分类及调用<br>  &lt;1&gt;构造函数的分类方式：<br>      按参数分为：有参构造和无参构造（默认构造）<br>      语法：类名(参数){} 和 类名(){};</p>
+<pre><code>按类型分为：普通构造和拷贝构造（用来克隆个体变量的所有属性，谁调用传到谁身上）
+语法：类名(参数){} 和 类名(const 类名 &amp;被拷贝的个体变量){};</code></pre><p>  &lt;2&gt;三种调用方法<br>      (1)括号法<br>         ·调用默认<br>         ·调用有参构造： 类名 个体名(对应类型参数值)<br>         ·调用拷贝构造： 类名 个体名(被拷贝个体名)<br>      (2)显示法<br>         ·调用有参构造： 类名 个体名=类名(对应类型参数值)<br>         ·调用拷贝构造： 类名 个体名=类名(被拷贝个体名)<br>      (3)隐式转换法<br>         ·调用有参构造： 类名 个体名=对应类型参数值<br>         ·调用拷贝构造： 类名 个体名=被拷贝个体名</p>
+<p>三、拷贝构造函数的调用时机<br>  &lt;1&gt;使用一个已经创建完毕的对象来初始化一个新对象<br>  &lt;2&gt;值传递的方式给函数参数传值 例：void func(含有拷贝构造函数的类名 个体名){}; 此处进行了值传递，会对源对象进行一次拷贝，会调用拷贝构造函数<br>  &lt;3&gt;以值方式返回局部对象 例：含有拷贝构造函数的类名 func(){}; 此处返回值为含有拷贝构造函数的类的类型值，局部变量运行过后就会被销毁，所以返回值也是一个拷贝值，会调用拷贝构造函数 </p>
+<p>四、构造函数的调用规则<br>   ·默认情况下，C++编译器至少给一个类添加三个函数：默认构造函数（空实现）、默认析构函数（空实现）、默认拷贝函数（值拷贝）<br>   ·如果用户定义有参构造函数，C++不再提供默认构造函数，但是还是会提供默认拷贝构造<br>   ·如果用户定义有拷贝构造函数，C++不会再提供其他构造函数</p>
+<p>五、深拷贝和浅拷贝<br>   ·浅拷贝：简单的赋值拷贝操作<br>   ·深拷贝：在堆区重新申请空间，进行拷贝操作<br>   ·属性如果开辟在堆区，就需要自己提供一个堆区的深拷贝，否则会产生重复清除区域错误</p>
+<p>六、初始化列表<br>   ·作用：构造函数时批次初始化属性<br>   ·语法：构造函数():属性1(值1),属性2(值2)…{};</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -191,16 +222,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%8C/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/28/C++%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%9B%9B/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/03/29/%E5%87%BD%E6%95%B0%E7%9A%84%E6%8F%90%E9%AB%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          函数的提高
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/27/C++%E7%B1%BB%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A2%E7%B4%A2%20%E4%B8%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++类的对象的探索 三</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -220,597 +319,14 @@
 
 
 
-
-  
-    <article id="post-C-模板的探索-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/29/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%80/">C++模板的探索 一</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/29/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%80/" class="archive-article-date">
-  	<time datetime="2020-04-29T12:35:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##函数模板 </p>
-        
-          <a class="article-more-a" href="/2020/04/29/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%80/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/29/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-文件操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/26/C-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">C++文件操作</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/26/C-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2020-04-26T12:28:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##通过文件可以将数据持久化</p>
-        
-          <a class="article-more-a" href="/2020/04/26/C-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/26/C-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-STL的探索-九" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/23/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B9%9D/">STL的探索 九</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/23/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B9%9D/" class="archive-article-date">
-  	<time datetime="2020-04-23T11:14:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##pair队组容器</p>
-        
-          <a class="article-more-a" href="/2020/04/23/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B9%9D/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/23/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B9%9D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-STL的探索-七" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%83/">STL的探索 七</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%83/" class="archive-article-date">
-  	<time datetime="2020-04-22T12:13:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##list容器</p>
-        
-          <a class="article-more-a" href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%83/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-STL的探索-八" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AB/">STL的探索 八</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AB/" class="archive-article-date">
-  	<time datetime="2020-04-22T11:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##set/multiset容器</p>
-        
-          <a class="article-more-a" href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AB/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-STL的s探索-六" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/21/STL%E7%9A%84s%E6%8E%A2%E7%B4%A2-%E5%85%AD/">STL的探索 六</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/21/STL%E7%9A%84s%E6%8E%A2%E7%B4%A2-%E5%85%AD/" class="archive-article-date">
-  	<time datetime="2020-04-21T11:13:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##queue容器</p>
-        
-          <a class="article-more-a" href="/2020/04/21/STL%E7%9A%84s%E6%8E%A2%E7%B4%A2-%E5%85%AD/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/21/STL%E7%9A%84s%E6%8E%A2%E7%B4%A2-%E5%85%AD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-STL的探索-五" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%94/">STL的探索 五</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%94/" class="archive-article-date">
-  	<time datetime="2020-04-20T09:12:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##stack容器</p>
-        
-          <a class="article-more-a" href="/2020/04/20/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%94/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%94/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-STL的探索-四" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/19/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%9B%9B/">STL的探索 四</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/19/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%9B%9B/" class="archive-article-date">
-  	<time datetime="2020-04-19T11:12:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##deque容器</p>
-        
-          <a class="article-more-a" href="/2020/04/19/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%9B%9B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/19/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%9B%9B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-STL的探索-三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/18/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%89/">STL的探索 三</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/18/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%89/" class="archive-article-date">
-  	<time datetime="2020-04-18T11:12:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##vector容器</p>
-        
-          <a class="article-more-a" href="/2020/04/18/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/18/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -833,8 +349,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
