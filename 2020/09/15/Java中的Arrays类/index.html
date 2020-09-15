@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 回首处，灯火阑珊</title>
+  <title>C++到Java的过渡初探 | 回首处，灯火阑珊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="回首处，灯火阑珊">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="##Java中的Arrays类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++到Java的过渡初探">
+<meta property="og:url" content="http://yoursite.com/2020/09/15/Java%E4%B8%AD%E7%9A%84Arrays%E7%B1%BB/index.html">
 <meta property="og:site_name" content="回首处，灯火阑珊">
+<meta property="og:description" content="##Java中的Arrays类">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-15T01:29:13.000Z">
+<meta property="article:modified_time" content="2020-09-15T13:14:24.083Z">
 <meta property="article:author" content="浮生白衣">
 <meta name="twitter:card" content="summary">
   
@@ -155,295 +159,165 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Java中的Arrays类" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      C++到Java的过渡初探
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/15/Java%E4%B8%AD%E7%9A%84Arrays%E7%B1%BB/" class="archive-article-date">
+
+        
+        <a href="/2020/09/15/Java%E4%B8%AD%E7%9A%84Arrays%E7%B1%BB/" class="archive-article-date">
   	<time datetime="2020-09-15T01:29:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/15/Java%E4%B8%AD%E7%9A%84Arrays%E7%B1%BB/">C++到Java的过渡初探</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Java中的Arrays类</p>
+<a id="more"></a>
+<p>JDK中提供了一个专门用于操作数组的工具类，即Arrays类，位于java util 中<br>用前需导包：import java.util.Arrays;</p>
+<p>Arrays类常用方法<br>返回类型          方法                       说明</p>
+<p>String           toString（array）          将数组array转换成字符串<br>void             sort（array）              对数组进行升序排列<br>void             fill（arr，val）           将数组arr全部元素赋值为val<br>boolean          equals（arr1，arr2）       判断两个数组是否相等<br>与arr类型相同     copyOf（arr，length）      将数组arr复制成一个长度为length的新数组<br>int              binarySearch(arr, val)     查询元素val在arr中的下标值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[]=&#123;<span class="number">12</span>,<span class="number">20</span>,<span class="number">13</span>,<span class="number">42</span>,<span class="number">72</span>,<span class="number">26</span>,<span class="number">35</span>,<span class="number">10</span>,<span class="number">46</span>,<span class="number">26</span>,<span class="number">53</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> b[]=&#123;<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">54</span>,<span class="number">23</span>,<span class="number">9</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> c[]=&#123;<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">54</span>,<span class="number">23</span>,<span class="number">9</span>&#125;;</span><br><span class="line"> </span><br><span class="line">    String str=Arrays.toString(a);       <span class="comment">//將特定數組轉換成字符串</span></span><br><span class="line">    System.out.println(<span class="string">"字符串："</span>+str);</span><br><span class="line">    </span><br><span class="line">    Arrays.sort(a);                      <span class="comment">//对数组array的元素进行升序排列</span></span><br><span class="line">    System.out.println(<span class="string">"排序后："</span>+Arrays.toString(a)); </span><br><span class="line">    </span><br><span class="line">    Arrays.fill(a,<span class="number">10</span>);                   <span class="comment">//所以元素都賦值成特定值</span></span><br><span class="line">    System.out.println(<span class="string">"賦值后："</span>+Arrays.toString(a)); </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">boolean</span> boo=Arrays.equals(a,b);      <span class="comment">//判断两个数组是否相等(對應位置上的元素是否相等)</span></span><br><span class="line">    <span class="keyword">boolean</span> boo2=Arrays.equals(b, c);</span><br><span class="line">    System.out.println(<span class="string">"a:"</span>+a);</span><br><span class="line">    System.out.println(<span class="string">"b:"</span>+b);</span><br><span class="line">    System.out.println(<span class="string">"c:"</span>+c);</span><br><span class="line">    System.out.println(<span class="string">"ab相等？"</span>+boo);</span><br><span class="line">    System.out.println(<span class="string">"bc相等？"</span>+boo2);</span><br><span class="line">    </span><br><span class="line"> </span><br><span class="line">    <span class="keyword">int</span> d[]=Arrays.copyOf(b,b.length);   <span class="comment">//把数组复制成特定长度的数组,與直接賦值（引用傳遞）不同</span></span><br><span class="line">    System.out.println(<span class="string">"d:"</span>+Arrays.toString(d));</span><br><span class="line">    System.out.println(<span class="string">"d:"</span>+d);</span><br><span class="line">    System.out.println(<span class="string">"b:"</span>+b);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> i=Arrays.binarySearch(b, <span class="number">5</span>);     <span class="comment">//查詢特定因素在數組中的下標標</span></span><br><span class="line">    System.out.println(<span class="string">"下標是："</span>+i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果是：<br>字符串：[12, 20, 13, 42, 72, 26, 35, 10, 46, 26, 53]<br>排序后：[10, 12, 13, 20, 26, 26, 35, 42, 46, 53, 72]<br>賦值后：[10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]<br>a:[I@1fb8ee3<br>b:[I@61de33<br>c:[I@14318bb<br>ab相等？false<br>bc相等？true<br>d:[3, 5, 7, 8, 54, 23, 9]<br>d:[I@ca0b6<br>b:[I@61de33<br>下標是：1</p>
+<p>===========================================================================================</p>
+<p>for在数组中 的特殊用法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>（元素类型 变量名：要循环的数组或集合名）&#123;</span><br><span class="line"> </span><br><span class="line">       <span class="comment">//循环对每个元素进行操作</span></span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一个元素类型是数组或集合中元素的类型，变量名在循环时原来保存每个元素的值，冒号后面是要循环的数组或集合名称</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/15/Java%E4%B8%AD%E7%9A%84Arrays%E7%B1%BB/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/11/C++%E5%88%B0Java%E7%9A%84%E8%BF%87%E6%B8%A1%E5%88%9D%E6%8E%A2/" class="archive-article-date">
-  	<time datetime="2020-09-11T01:29:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/09/11/C++%E5%88%B0Java%E7%9A%84%E8%BF%87%E6%B8%A1%E5%88%9D%E6%8E%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++到Java的过渡初探</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/11/C++%E5%88%B0Java%E7%9A%84%E8%BF%87%E6%B8%A1%E5%88%9D%E6%8E%A2/">C++到Java的过渡初探</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/07/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%8D%81/" class="archive-article-date">
-  	<time datetime="2020-05-07T09:38:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/07/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%8D%81/">STL的探索 十</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/01/C-%E7%AE%97%E6%B3%95%EF%BC%9AJosephus%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-05-01T13:01:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/01/C-%E7%AE%97%E6%B3%95%EF%BC%9AJosephus%E9%97%AE%E9%A2%98/">C++算法：Josephus问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/30/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%8C/" class="archive-article-date">
-  	<time datetime="2020-04-30T12:35:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/30/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%BA%8C/">C++模板的探索 二</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/29/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%80/" class="archive-article-date">
-  	<time datetime="2020-04-29T12:35:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/29/C-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%80/">C++模板的探索 一</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/C-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2020-04-26T12:28:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/C-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">C++文件操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/23/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B9%9D/" class="archive-article-date">
-  	<time datetime="2020-04-23T11:14:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/23/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B9%9D/">STL的探索 九</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%83/" class="archive-article-date">
-  	<time datetime="2020-04-22T12:13:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E4%B8%83/">STL的探索 七</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AB/" class="archive-article-date">
-  	<time datetime="2020-04-22T11:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/22/STL%E7%9A%84%E6%8E%A2%E7%B4%A2-%E5%85%AB/">STL的探索 八</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -467,8 +341,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
